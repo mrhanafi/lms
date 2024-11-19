@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 
 const CourseCard = ({ appData }) => {
     const router = useRouter();
+    // console.log(appData)
     const goToCourseDetails = (item) => {
         router.push({
             pathname: '/course-details',
@@ -20,7 +21,7 @@ const CourseCard = ({ appData }) => {
                             <Image source={{ uri: "https://lmsbe.hanafirahman.com"+item?.featured_image?.formats?.thumbnail?.url }} width={100} height={100} />
 
                         </View>
-                        <View>
+                        <View style={{ width: '70%' }}>
                             <Text style={styles.title}>{item?.title}</Text>
                             {/* <Text>Description</Text> */}
                         </View>
@@ -41,10 +42,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     title: {
-        width: '50%',
+        width: '100%',
         fontWeight: 'bold',
         fontSize: 18,
         marginLeft: 5,
-        marginTop: 5
+        marginTop: 5,
     },
 })

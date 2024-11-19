@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     categoryContainer: {
-        backgroundColor: Colors.lightGrey,
+        backgroundColor: Colors.veryLightGrey,
         borderRadius: 10,
         padding: 7,
         marginBottom: 20,

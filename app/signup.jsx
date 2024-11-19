@@ -1,11 +1,16 @@
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
 import { Colors } from '@/constants/Colors';
 
 const SignUp = () => {
   const router = useRouter();
+  const [identifier, setIdentifier] = useState();
+  const [fullname, setFullname] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
   return (
     <View style={styles.container}>
           <View>
@@ -16,9 +21,13 @@ const SignUp = () => {
           <View style={{ flex:1 }}>
                 <Text style={{ fontSize: 40, textAlign: 'center',fontWeight: 'bold' }}>Sign Up</Text>
                 <Text style={{ fontSize: 20,textAlign: 'center',marginTop: 20 }}>Create an account to begin your Learning Journey</Text>
-                <View style={{ paddingTop: 50 }}>
+                <View style={{ paddingTop: 10 }}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Full Name</Text>
+                        <TextInput placeholder='Your Name Here' style={styles.txtbox } />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.label}>Username</Text>
                         <TextInput placeholder='Your Name Here' style={styles.txtbox } />
                     </View>
                     <View style={styles.inputContainer}>

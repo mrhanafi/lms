@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import {QuestionProvider} from '@/utils/QuestionContext';
 
 // import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -28,14 +29,16 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <QuestionProvider>
       <Stack screenOptions={{ headerShown:false }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="signin" options={{ headerShown: false }} />
         <Stack.Screen name="signup" options={{ headerShown: false }} />
         <Stack.Screen name="lesson" options={{ headerShown: false }} />
+        <Stack.Screen name="question" options={{ headerShown: false }} />
+        <Stack.Screen name="question2" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
-    </>
+    </QuestionProvider>
   );
 }

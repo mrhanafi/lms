@@ -13,15 +13,15 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <MaterialIcons name="home-filled" size={28} color={color} />,
         }}
-      />
+      /> */}
       <Tabs.Screen
-        name="course"
+        name="index"
         options={{
           title: 'Courses',
           tabBarIcon: ({ color }) => <MaterialIcons name="menu-book" size={28} color={color} />,
@@ -30,7 +30,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="favourite"
         options={{
-          title: 'Enroll',
+          title: 'Career Path',
           tabBarIcon: ({ color }) => <MaterialIcons name="bookmark" size={28} color={color} />,
         }}
       />

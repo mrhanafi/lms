@@ -17,7 +17,7 @@ const CourseDetails = () => {
     const fetchCourse = async (id) => {
         const course = await getCourseById(id);
             setData(course?.data?.data);
-            // console.log(course?.data?.data)
+            console.log(course?.data?.data)
             return course?.data?.data;
     }
 
@@ -59,7 +59,7 @@ const CourseDetails = () => {
   return (
     <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
-            <Image source={{ uri: "https://lmsbe.hanafirahman.com" + data?.featured_image?.formats?.medium?.url }} width={'auto'} height={300} />
+            <Image source={{ uri: "https://lmsbe.hanafirahman.com" + data?.featured_image?.formats?.small?.url }} width={'auto'} height={300} />
             <TouchableOpacity onPress={() => router.back()}>
                 <AntDesign name="left" size={30} color="white"  style={styles.backBtn} />
             </TouchableOpacity>

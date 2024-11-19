@@ -76,7 +76,7 @@ export const getCourseById = async (documentId) => {
   const AuthStr = "Bearer " + token;
   const options = {
     method: "GET",
-    url: GET_COURSE_BY_ID + documentId +'?populate=*',
+    url: GET_COURSE_BY_ID + documentId + "?populate=*",
     headers: {
       Accept: "application/json",
       Authorization: AuthStr,
@@ -99,7 +99,7 @@ export const getCourseUser = async (userId) => {
   };
 
   return await axios.request(options);
-}
+};
 
 export const getAuthUser = async () => {
   const token = await services.getData("token");
@@ -114,4 +114,29 @@ export const getAuthUser = async () => {
   };
 
   return await axios.request(options);
-}
+};
+
+export const getTypeformQuestions = async () => {
+  try {
+    const formID = "UaTNT6PC"; // Replace with your Typeform form ID
+    const apiKey =
+      "tfp_J671HM96VRyzhp8BTKuDhKRA6tHfE2bUewP9HzABhjDT_3pc59XppDTXC3b"; // Replace with your Typeform API key
+
+    const response = await axios.get(
+      `https://api.typeform.com/forms/${formID}`,
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    );
+
+    const questions = response.data.fields;
+    // console.log(questions); // Logs all questions
+    return questions;
+
+    // You can then use this data to display in your React Native app
+  } catch (error) {
+    console.error("Error fetching Typeform questions:", error);
+  }
+};
