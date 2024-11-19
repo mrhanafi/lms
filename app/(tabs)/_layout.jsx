@@ -30,7 +30,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="favourite"
         options={{
-          title: 'Favourite',
+          title: 'Enroll',
           tabBarIcon: ({ color }) => <MaterialIcons name="bookmark" size={28} color={color} />,
         }}
       />

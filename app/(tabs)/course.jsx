@@ -9,6 +9,7 @@ import axios from 'axios';
 import services from '../../utils/services';
 import Categories from '@/components/Categories';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import CourseCard from '../../components/CourseCard';
 
 const Course = () => {
     const router = useRouter();
@@ -16,7 +17,8 @@ const Course = () => {
     const [appData,setAppData] = useState();
     const [categories,setCategories] = useState();
     const [category,setCategory] = useState();
-    const [search,setSearch] = useState('');
+    const [search, setSearch] = useState('');
+    
     const fetchCourse = async () => {
         // setLoading(true);
         const courses = await getCourses();
@@ -50,6 +52,7 @@ const Course = () => {
         return courses?.data?.data;
     }
 
+
     useFocusEffect(
         useCallback(() => {
           // console.log('Hello, I am focused!');
@@ -59,7 +62,7 @@ const Course = () => {
             setAppData(courses?.data?.data);
             
             // console.log("clientApp:",clientApp?.data?.appointments);
-            // console.log(courses?.data?.data)
+            console.log(courses?.data?.data)
             
             return courses?.data?.data;
           }
@@ -101,25 +104,22 @@ const Course = () => {
         <View>
             <Categories catItem={categories} onCategoryPress={filterCourseByCategory} selectedCategory={category} />
         </View>
-        <View style={{  gap:5 }}>
+        <CourseCard appData={appData} />  
+        {/* <View style={{  gap:5 }}>
             {appData?.length > 0 && (
                 appData?.map((item,index) => (
-                    <TouchableOpacity style={styles.cardContainer} key={index} onPress={router.push({
-                        pathname:'/course-details',
-                        params:item
-                    })}>
+                    <TouchableOpacity style={styles.cardContainer} key={index}>
                         <View>
                             <Image source={{ uri: "https://lmsbe.hanafirahman.com"+item?.featured_image?.formats?.thumbnail?.url }} width={100} height={100} />
 
                         </View>
                         <View>
                             <Text style={styles.title}>{item?.title}</Text>
-                            {/* <Text>Description</Text> */}
                         </View>
                     </TouchableOpacity>
                 ))
             )}
-        </View>
+        </View> */}
         
       <Text onPress={fetchCourse} style={{ marginTop:50 }}>Course</Text>
       <TouchableOpacity onPress={fetchCourse}>
