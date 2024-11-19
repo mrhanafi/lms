@@ -8,6 +8,7 @@ import {
   GET_COURSES_BY_CATEGORY,
   GET_COURSES_BY_SEARCH,
   GET_ME,
+  TYPEFORM_KEY,
 } from "./apiConfig";
 import services from "./services";
 
@@ -119,8 +120,7 @@ export const getAuthUser = async () => {
 export const getTypeformQuestions = async () => {
   try {
     const formID = "UaTNT6PC"; // Replace with your Typeform form ID
-    const apiKey =
-      "tfp_59RbtE9Xf8YJQW34BpVAvCzLyYRBrRPcymJZxdLREChz_3mLKQtHXV1gWzZ"; // Replace with your Typeform API key
+    const apiKey = TYPEFORM_KEY; // Replace with your Typeform API key
 
     const response = await axios.get(
       `https://api.typeform.com/forms/${formID}`,
