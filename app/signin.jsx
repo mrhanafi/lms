@@ -34,10 +34,6 @@ const SignIn = () => {
         });
     }
 
-    const onTest = async () => {
-      const huhu = await services.getData("user");
-            console.log(huhu);
-    }
   return (
     <View style={styles.container}>
         <View>

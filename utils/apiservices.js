@@ -120,7 +120,7 @@ export const getTypeformQuestions = async () => {
   try {
     const formID = "UaTNT6PC"; // Replace with your Typeform form ID
     const apiKey =
-      "tfp_J671HM96VRyzhp8BTKuDhKRA6tHfE2bUewP9HzABhjDT_3pc59XppDTXC3b"; // Replace with your Typeform API key
+      "tfp_59RbtE9Xf8YJQW34BpVAvCzLyYRBrRPcymJZxdLREChz_3mLKQtHXV1gWzZ"; // Replace with your Typeform API key
 
     const response = await axios.get(
       `https://api.typeform.com/forms/${formID}`,

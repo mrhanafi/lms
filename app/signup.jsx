@@ -1,16 +1,46 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Alert } from 'react-native'
 import React, { useState } from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
 import { Colors } from '@/constants/Colors';
+import { REGISTER_USER } from '../utils/apiConfig';
+import axios from 'axios';
 
 const SignUp = () => {
   const router = useRouter();
-  const [identifier, setIdentifier] = useState();
+  const [username, setUsername] = useState();
   const [fullname, setFullname] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
+//   const [confirmPassword, setConfirmPassword] = useState();
+
+
+const onSubmit = async () => {
+    // console.log(identifier)
+    let res = await axios.post(REGISTER_USER, {
+        username,
+        password,
+        fullname,
+        email
+    }).then((response) => {
+        // console.log("User profile", response.data.user);
+        // console.log("User token", response.data.jwt);
+        // console.log(response);
+        Alert.alert('Registration Successful!');
+        router.push('/signin')
+        // services.storeData("token",response.data.jwt);
+        // services.storeData("user",JSON.stringify(response.data.user));
+
+        
+        // router.push({
+        //   pathname:'/(tabs)',
+        //   params:response.data
+        // });
+    })
+    .catch((error) => {
+        console.log("An error occurred:", error.response);
+    });
+}
   return (
     <View style={styles.container}>
           <View>
@@ -24,29 +54,28 @@ const SignUp = () => {
                 <View style={{ paddingTop: 10 }}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Full Name</Text>
-                        <TextInput placeholder='Your Name Here' style={styles.txtbox } />
+                        <TextInput placeholder='Your Name Here' style={styles.txtbox } value={fullname} onChangeText={(val) => setFullname(val)} />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Username</Text>
-                        <TextInput placeholder='Your Name Here' style={styles.txtbox } />
+                        <TextInput placeholder='Your Name Here' style={styles.txtbox } value={username} onChangeText={(val) => setUsername(val)} />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Email</Text>
-                        <TextInput placeholder='Your Email Here' style={styles.txtbox } />
+                        <TextInput placeholder='Your Email Here' style={styles.txtbox } value={email} onChangeText={(val) => setEmail(val)} />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.label}>Password</Text>
-                        <TextInput placeholder='**************' secureTextEntry={true} style={styles.txtbox } />
+                        <TextInput placeholder='**************' secureTextEntry={true} style={styles.txtbox } value={password} onChangeText={(val) => setPassword(val)} />
                     </View>
-                    <View style={styles.inputContainer}>
+                    {/* <View style={styles.inputContainer}>
                         <Text style={styles.label}>Confirm Password</Text>
                         <TextInput placeholder='**************' secureTextEntry={true} style={styles.txtbox } />
-                    </View>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.btnText}>Sign In</Text>
+                    </View> */}
+                    <TouchableOpacity style={styles.btn} onPress={onSubmit}>
+                        <Text style={styles.btnText}>Sign Up</Text>
                     </TouchableOpacity>
             </View>
-          </View>
           <View style={styles.note}>
                 <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
                     Already have an account?
@@ -56,6 +85,7 @@ const SignUp = () => {
                 </TouchableOpacity>
                 
             </View>
+          </View>
     </View>
   )
 }
@@ -98,7 +128,7 @@ const styles = StyleSheet.create({
       color: Colors.white,
       paddingHorizontal: 20
   },
-  note: { flexDirection: 'row', justifyContent: 'center', gap: 7, paddingBottom: 50 },
+  note: { flexDirection: 'row', justifyContent: 'center', gap: 7, paddingTop: 40 },
   signup: {
       color: Colors.primary,
       textDecorationLine: 'underline'
