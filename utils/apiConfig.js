@@ -13,3 +13,6 @@ export const GET_COURSES_BY_CATEGORY =
   "/courses?populate=*&filters[category_name][category_name][$contains]=";
 export const GET_COURSES_BY_SEARCH =
   BE_URL + "/courses?populate=*&filters[title][$contains]=";
+
+export const SECRET_KEY =
+  "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";
